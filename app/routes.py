@@ -88,3 +88,36 @@ def delete_product_form(id):
     db.session.commit()
     flash('Product deleted successfully!')
     return redirect(url_for('main.menu'))
+
+@bp.route('/products/new', methods=['GET', 'POST'])
+@login_required
+def new_product():
+    if request.method == 'POST':
+        # Retrieve form data
+        name = request.form.get('name')
+        description = request.form.get('description')
+        try:
+            price = float(request.form.get('price'))
+        except (TypeError, ValueError):
+            price = 0.0
+        try:
+            quantity = int(request.form.get('quantity', 0))
+        except (TypeError, ValueError):
+            quantity = 0
+        category = request.form.get('category', 'General')
+        
+        # Create a new Product instance
+        new_prod = Product(
+            name=name,
+            description=description,
+            price=price,
+            quantity=quantity,
+            category=category
+        )
+        db.session.add(new_prod)
+        db.session.commit()
+        flash("New product added successfully!")
+        return redirect(url_for('main.menu'))
+    
+    # For GET request, render the new product form
+    return render_template('new_product.html')

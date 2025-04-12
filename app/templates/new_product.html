@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Add New Product{% endblock %} {%
+block content %}
+<h2>Add New Product</h2>
+<form method="POST" action="{{ url_for('main.new_product') }}">
+  <p>
+    <label for="name">Product Name:</label><br />
+    <input type="text" id="name" name="name" required />
+  </p>
+  <p>
+    <label for="description">Description:</label><br />
+    <textarea id="description" name="description"></textarea>
+  </p>
+  <p>
+    <label for="price">Price:</label><br />
+    <input type="number" id="price" name="price" step="0.01" required />
+  </p>
+  <p>
+    <label for="quantity">Quantity:</label><br />
+    <input type="number" id="quantity" name="quantity" value="0" required />
+  </p>
+  <p>
+    <label for="category">Category:</label><br />
+    <input type="text" id="category" name="category" />
+  </p>
+  <p>
+    <button type="submit">Add Product</button>
+  </p>
+</form>
+<p><a href="{{ url_for('main.menu') }}">Back to Menu</a></p>
+{% endblock %}
