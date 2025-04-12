@@ -127,3 +127,4 @@ def new_product():
 def category(category):
     # For now, simply return a placeholder response
     return f"<h2>Products in {category}</h2>"
+

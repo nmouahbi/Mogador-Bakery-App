@@ -6,11 +6,14 @@
 >
   <p class="title">Menu</p>
 
-  <!-- Button to Add New Product -->
-  <div style="text-align: right; margin-bottom: 15px">
+  <!-- Top Section: Add New Product and Logout -->
+  <div
+    style="display: flex; justify-content: space-between; margin-bottom: 15px"
+  >
     <a href="{{ url_for('main.new_product') }}" class="nes-btn is-primary"
       >Add New Product</a
     >
+    <a href="{{ url_for('auth.logout') }}" class="nes-btn is-error">Logout</a>
   </div>
 
   {% if products %}
