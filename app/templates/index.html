@@ -1,9 +1,84 @@
 {% extends "base.html" %} {% block title %}Welcome to Mogador Bakery{% endblock
 %} {% block content %}
-<h1>🍞 Welcome to Mogador Bakery</h1>
-<p>Discover our traditional baked goods and manage your menu easily.</p>
-<p>
-  <a href="{{ url_for('auth.register') }}">Register</a> |
-  <a href="{{ url_for('auth.login') }}">Login</a>
-</p>
+<!-- Navbar with three sections -->
+<nav
+  class="navbar"
+  style="
+    background-color: #f8f8f8;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  "
+>
+  <!-- Left Section: Admin Login -->
+  <div class="navbar-left">
+    <a
+      href="{{ url_for('auth.login') }}"
+      style="text-decoration: none; color: #333; font-weight: bold"
+      >Admin Login</a
+    >
+  </div>
+
+  <!-- Center Section: Bakery Categories -->
+  <div class="navbar-center">
+    <ul style="list-style: none; display: flex; margin: 0; padding: 0">
+      <li style="margin: 0 15px">
+        <a
+          href="{{ url_for('main.category', category='Cakes') }}"
+          style="text-decoration: none; color: #333"
+          >Cakes</a
+        >
+      </li>
+      <li style="margin: 0 15px">
+        <a
+          href="{{ url_for('main.category', category='Pastries') }}"
+          style="text-decoration: none; color: #333"
+          >Pastries</a
+        >
+      </li>
+      <li style="margin: 0 15px">
+        <a
+          href="{{ url_for('main.category', category='Bread') }}"
+          style="text-decoration: none; color: #333"
+          >Bread</a
+        >
+      </li>
+      <li style="margin: 0 15px">
+        <a
+          href="{{ url_for('main.category', category='Cookies') }}"
+          style="text-decoration: none; color: #333"
+          >Cookies</a
+        >
+      </li>
+      <li style="margin: 0 15px">
+        <a
+          href="{{ url_for('main.category', category='Pies') }}"
+          style="text-decoration: none; color: #333"
+          >Pies</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Section: User Authentication Links -->
+  <div class="navbar-right">
+    <a
+      href="{{ url_for('auth.register') }}"
+      class="nes-btn is-primary"
+      style="margin-right: 10px"
+      >Register</a
+    >
+    <a href="{{ url_for('auth.login') }}" class="nes-btn is-success"
+      >User Login</a
+    >
+  </div>
+</nav>
+
+<!-- Main Content Section -->
+<div class="main-content" style="text-align: center; padding: 30px">
+  <h1>🍞 Welcome to Mogador Bakery</h1>
+  <p>Discover our traditional baked goods and explore our delicious range.</p>
+  <p>Browse by category or log in to manage your menu.</p>
+</div>
 {% endblock %}
