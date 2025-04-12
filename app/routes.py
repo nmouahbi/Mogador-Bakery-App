@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template, redirect, url_for
+from flask import flash,Blueprint, request, jsonify, render_template, redirect, url_for
 from .models import db, Product
 from flask_login import current_user, login_required
 
@@ -63,3 +63,28 @@ def menu():
     return render_template('menu.html', products=products)
 
 
+
+@bp.route('/products/<int:id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_product(id):
+    product = Product.query.get_or_404(id)
+    if request.method == 'POST':
+        # Update product with form data (adjust field names as needed)
+        product.name = request.form.get('name')
+        product.description = request.form.get('description')
+        product.price = float(request.form.get('price', product.price))
+        product.quantity = int(request.form.get('quantity', product.quantity))
+        product.category = request.form.get('category')
+        db.session.commit()
+        flash('Product updated successfully!')
+        return redirect(url_for('main.menu'))
+    return render_template('edit_product.html', product=product)
+
+@bp.route('/products/<int:id>/delete', methods=['POST'])
+@login_required
+def delete_product_form(id):
+    product = Product.query.get_or_404(id)
+    db.session.delete(product)
+    db.session.commit()
+    flash('Product deleted successfully!')
+    return redirect(url_for('main.menu'))
