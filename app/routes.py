@@ -1,13 +1,12 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from .models import db, Product
-from flask import render_template
-from flask_login import current_user
-
-
+from flask_login import current_user, login_required
 
 bp = Blueprint('main', __name__)
+
 @bp.route('/')
 def home():
+    # If the user is logged in, send them directly to the menu page.
     if current_user.is_authenticated:
         return redirect(url_for('main.menu'))
     return render_template('index.html')
@@ -57,3 +56,10 @@ def delete_product(id):
     db.session.delete(product)
     db.session.commit()
     return jsonify({"message": "Product deleted successfully!"})
+
+@bp.route('/menu')
+@login_required
+def menu():
+    # Get all products to display in the menu
+    products = Product.query.all()
+    return render_template('menu.html', products=products)
