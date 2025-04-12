@@ -8,5 +8,12 @@ content %}
   <p>{{ form.confirm_password.label }} {{ form.confirm_password() }}</p>
   <p>{{ form.submit() }}</p>
 </form>
+{% if form.errors %}
+<ul style="color: red">
+  {% for field, errors in form.errors.items() %} {% for error in errors %}
+  <li>{{ field }}: {{ error }}</li>
+  {% endfor %} {% endfor %}
+</ul>
+{% endif %}
 <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
 {% endblock %}

@@ -22,7 +22,6 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        # Check if the username already exists
         if User.query.filter_by(username=form.username.data).first():
             flash('Username already taken')
             return render_template('register.html', form=form)
@@ -34,6 +33,9 @@ def register():
         db.session.commit()
         flash('Account created. You can now log in.')
         return redirect(url_for('auth.login'))
+    else:
+        # Debug: print form errors to the logs so you can see what is failing
+        print("Registration form errors:", form.errors)
     return render_template('register.html', form=form)
 
 @auth_bp.route('/logout')
