@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Menu{% endblock %} {% block content
+%}
+<h1>Menu</h1>
+{% if products %}
+<ul>
+  {% for product in products %}
+  <li>
+    <strong>{{ product.name }}</strong> - ${{ product.price }} - {{
+    product.description }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No products available yet.</p>
+{% endif %} {% endblock %}

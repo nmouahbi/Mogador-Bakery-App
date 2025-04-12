@@ -12,17 +12,19 @@ def create_app():
 
     # Setup LoginManager
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'  # redirect to 'auth.login' if not logged in
+    login_manager.login_view = 'auth.login'  # redirect if not authenticated
     login_manager.init_app(app)
 
-    # Load user from session
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
-
+    
+    # Comment out db.create_all() here to avoid duplicate table errors.
+    # with app.app_context():
+    #     db.create_all()
 
     # Register Blueprints
     app.register_blueprint(bp)
     app.register_blueprint(auth_bp)
-
+    
     return app

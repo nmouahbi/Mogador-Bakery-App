@@ -22,11 +22,9 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        existing_user = User.query.filter_by(username=form.username.data).first()
-        if existing_user:
+        if User.query.filter_by(username=form.username.data).first():
             flash('Username already taken')
             return render_template('register.html', form=form)
-
         new_user = User(
             username=form.username.data,
             password=generate_password_hash(form.password.data)

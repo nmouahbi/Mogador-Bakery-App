@@ -6,7 +6,6 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def home():
-    # If the user is logged in, send them directly to the menu page.
     if current_user.is_authenticated:
         return redirect(url_for('main.menu'))
     return render_template('index.html')
@@ -60,6 +59,5 @@ def delete_product(id):
 @bp.route('/menu')
 @login_required
 def menu():
-    # Get all products to display in the menu
     products = Product.query.all()
     return render_template('menu.html', products=products)
