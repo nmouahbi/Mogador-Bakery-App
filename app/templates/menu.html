@@ -1,30 +1,43 @@
 {% extends "base.html" %} {% block title %}Menu{% endblock %} {% block content
 %}
-<h1>Menu</h1>
-{% if products %}
-<ul>
-  {% for product in products %}
-  <li>
-    <strong>{{ product.name }}</strong> - ${{ product.price }} - {{
-    product.description }}
-    <!-- Link to edit the product -->
-    <a href="{{ url_for('main.edit_product', id=product.id) }}">Edit</a>
-    <!-- Form to delete the product -->
-    <form
-      action="{{ url_for('main.delete_product_form', id=product.id) }}"
-      method="POST"
-      style="display: inline"
-    >
-      <button
-        type="submit"
-        onclick="return confirm('Are you sure you want to delete this item?')"
+<div
+  class="nes-container with-title is-rounded"
+  style="margin: 20px auto; max-width: 600px"
+>
+  <p class="title">Menu</p>
+  {% if products %}
+  <ul class="nes-list is-disc">
+    {% for product in products %}
+    <li>
+      <strong>{{ product.name }}</strong> - ${{ product.price }} - {{
+      product.description }}
+      <!-- Update (Edit) button -->
+      <a
+        href="{{ url_for('main.edit_product', id=product.id) }}"
+        class="nes-btn is-primary"
+        style="margin-left: 10px"
+        >Edit</a
       >
-        Delete
-      </button>
-    </form>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No products available yet.</p>
-{% endif %} {% endblock %}
+      <!-- Delete form button -->
+      <form
+        action="{{ url_for('main.delete_product_form', id=product.id) }}"
+        method="POST"
+        style="display: inline"
+      >
+        <button
+          type="submit"
+          onclick="return confirm('Are you sure you want to delete this item?')"
+          class="nes-btn is-error"
+          style="margin-left: 5px"
+        >
+          Delete
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No products available yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
