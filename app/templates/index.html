@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %}Welcome to Mogador Bakery{% endblock
+%} {% block content %}
+<h1>🍞 Welcome to Mogador Bakery</h1>
+<p>Discover our traditional baked goods and manage your menu easily.</p>
+<p>
+  <a href="{{ url_for('auth.register') }}">Register</a> |
+  <a href="{{ url_for('auth.login') }}">Login</a>
+</p>
+{% endblock %}

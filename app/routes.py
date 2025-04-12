@@ -4,11 +4,12 @@ from flask import render_template
 
 
 bp = Blueprint('main', __name__)
-
-
 @bp.route('/')
 def home():
-    return "<h1>Welcome to Mogador Bakery! 🍞</h1><p><a href='/register'>Register</a> | <a href='/login'>Login</a></p>"
+    if current_user.is_authenticated:
+        return redirect(url_for('main.menu'))
+    return render_template('index.html')
+
 @bp.route('/products', methods=['GET'])
 def get_products():
     products = Product.query.all()
