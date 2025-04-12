@@ -12,4 +12,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Required for forms
-    SECRET_KEY = os.getenv('SECRET_KEY', 'this-should-be-changed')
+    SECRET_KEY = os.getenv('SECRET_KEY', '0779ba5c3606b130fd2287f261ad487e6035b73610ad477a')
