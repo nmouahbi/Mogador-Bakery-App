@@ -1,8 +1,14 @@
 from flask import Blueprint, request, jsonify
 from .models import db, Product
+from flask import render_template
+
 
 bp = Blueprint('main', __name__)
 
+
+@bp.route('/')
+def home():
+    return "<h1>Welcome to Mogador Bakery! 🍞</h1><p><a href='/register'>Register</a> | <a href='/login'>Login</a></p>"
 @bp.route('/products', methods=['GET'])
 def get_products():
     products = Product.query.all()
