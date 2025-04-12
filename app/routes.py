@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 from .models import db, Product
 from flask import render_template
+from flask_login import current_user
+
 
 
 bp = Blueprint('main', __name__)
