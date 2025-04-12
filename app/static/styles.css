@@ -1,0 +1,60 @@
+/* Form container styling */
+form {
+  width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each form paragraph */
+form p {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input styling */
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+/* Submit button styling */
+form input[type="submit"],
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+  background-color: #218838;
+}
+
+/* Flash or error messages styling */
+.error,
+.flash {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
