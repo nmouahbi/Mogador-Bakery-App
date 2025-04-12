@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from .forms import LoginForm, RegistrationForm
-from .models import User, db
+from .models import db, User
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -22,6 +22,7 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        # Check if the username already exists
         if User.query.filter_by(username=form.username.data).first():
             flash('Username already taken')
             return render_template('register.html', form=form)

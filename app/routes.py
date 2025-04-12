@@ -61,3 +61,5 @@ def delete_product(id):
 def menu():
     products = Product.query.all()
     return render_template('menu.html', products=products)
+
+

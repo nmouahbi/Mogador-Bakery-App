@@ -1,9 +1,9 @@
 from flask import Flask
 from .models import db, User
 from config import Config
-from .routes import bp
+from .routes import bp  # main blueprint
 from flask_login import LoginManager
-from .auth import auth_bp
+from .auth import auth_bp  # authentication blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -19,12 +19,12 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
     
-    # Comment out db.create_all() here to avoid duplicate table errors.
+    # Optionally, comment out db.create_all() here if you already created tables manually:
     # with app.app_context():
     #     db.create_all()
 
     # Register Blueprints
-    app.register_blueprint(bp)
-    app.register_blueprint(auth_bp)
-    
+    app.register_blueprint(bp)      # Routes for main functionalities
+    app.register_blueprint(auth_bp)   # Routes for login, register, logout
+
     return app
