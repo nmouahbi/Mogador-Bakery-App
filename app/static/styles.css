@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-  background-color: #f3efe0; /* Cream background */
+  background-color: #f3efe0; /* Warm cream background */
   font-family: "Helvetica Neue", Arial, sans-serif;
   color: #333;
   margin: 0;
@@ -34,6 +34,8 @@ nav.navbar a:hover {
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  margin-bottom: 40px;
+  padding: 20px;
 }
 
 /* Title Styling for Containers */
@@ -42,19 +44,21 @@ nav.navbar a:hover {
   font-size: 1.5em;
   font-weight: bold;
   background: #f3efe0;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border-bottom: 2px solid #006241;
+  margin: -20px -20px 20px -20px; /* Extend title background to container edge */
 }
 
 /* Button Styling */
 .nes-btn {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  margin: 5px 0;
 }
 
 .nes-btn:hover {
@@ -86,6 +90,7 @@ nav.navbar a:hover {
   padding: 40px;
   text-align: center;
   font-size: 1.1em;
+  margin: 20px;
 }
 
 h1,
@@ -94,14 +99,29 @@ h3 {
   color: #006241;
 }
 
-/* Form & Container Adjustments */
-.nes-container.with-title {
-  margin-bottom: 40px;
-  padding: 20px;
-}
-
+/* Form & Field Styling */
 .nes-field {
   margin-bottom: 15px;
+}
+
+.nes-field label {
+  font-weight: bold;
+  color: #006241;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.nes-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.nes-input:focus {
+  border-color: #007a33;
+  box-shadow: 0 0 5px rgba(0, 122, 51, 0.5);
 }
 
 /* Table Styling (for menu view) */
@@ -140,21 +160,15 @@ h3 {
   height: auto;
   margin-bottom: 10px;
 }
-/* Extra Styling for the New Product Form */
+
+/* Extra Styling for the New Product Form Container */
 .nes-container.with-title .nes-field label {
   font-weight: bold;
-  color: #006241; /* Dark green similar to a Starbucks vibe */
+  color: #006241;
 }
 
 .nes-container.with-title {
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 20px;
-}
-
-/* Optional: Style form input focus */
-.nes-input:focus {
-  border-color: #007a33;
-  box-shadow: 0 0 5px rgba(0, 122, 51, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
