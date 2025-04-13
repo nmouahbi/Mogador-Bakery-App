@@ -13,7 +13,7 @@
       style="width: 200px; padding: 10px; text-align: center"
     >
       <img
-        src="{{ url_for('static', filename='images/placeholder.png') }}"
+        src="{{ url_for('static', filename='images/' ~ (product.image if product.image else 'placeholder.png')) }}"
         alt="{{ product.name }}"
         style="width: 100%; height: auto; margin-bottom: 10px"
       />
