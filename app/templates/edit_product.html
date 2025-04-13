@@ -1,36 +1,96 @@
 {% extends "base.html" %} {% block title %}Edit Product{% endblock %} {% block
 content %}
-<h2>Edit Product</h2>
-<form method="POST">
-  <p>
-    <label for="name">Name:</label>
-    <input type="text" name="name" value="{{ product.name }}" required />
-  </p>
-  <p>
-    <label for="description">Description:</label>
-    <input type="text" name="description" value="{{ product.description }}" />
-  </p>
-  <p>
-    <label for="price">Price:</label>
-    <input
-      type="number"
-      name="price"
-      step="0.01"
-      value="{{ product.price }}"
-      required
-    />
-  </p>
-  <p>
-    <label for="quantity">Quantity:</label>
-    <input type="number" name="quantity" value="{{ product.quantity }}" />
-  </p>
-  <p>
-    <label for="category">Category:</label>
-    <input type="text" name="category" value="{{ product.category }}" />
-  </p>
-  <p>
-    <button type="submit">Update Product</button>
-  </p>
-</form>
-<p><a href="{{ url_for('main.menu') }}">Cancel</a></p>
+<div
+  class="nes-container with-title is-rounded"
+  style="max-width: 500px; margin: 30px auto; padding: 20px"
+>
+  <p class="title">Edit Product</p>
+  <form method="POST">
+    <!-- Product Name Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="name">Product Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="nes-input"
+        value="{{ product.name }}"
+        placeholder="Enter product name"
+        required
+      />
+    </div>
+    <!-- Description Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        class="nes-input"
+        placeholder="Enter product description"
+      >
+{{ product.description }}</textarea
+      >
+    </div>
+    <!-- Price Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        class="nes-input"
+        step="0.01"
+        value="{{ product.price }}"
+        placeholder="Enter price"
+        required
+      />
+    </div>
+    <!-- Quantity Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="quantity">Quantity:</label>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        class="nes-input"
+        value="{{ product.quantity }}"
+        placeholder="Enter quantity"
+      />
+    </div>
+    <!-- Category Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="category">Category:</label>
+      <input
+        type="text"
+        id="category"
+        name="category"
+        class="nes-input"
+        value="{{ product.category }}"
+        placeholder="Enter category"
+      />
+    </div>
+    <!-- Image Filename Field -->
+    <div class="nes-field" style="margin-bottom: 15px">
+      <label for="image">Image Filename:</label>
+      <input
+        type="text"
+        id="image"
+        name="image"
+        class="nes-input"
+        value="{{ product.image }}"
+        placeholder="Enter image filename (e.g., product.png)"
+      />
+    </div>
+    <!-- Submit and Cancel Buttons -->
+    <div style="margin-top: 20px">
+      <button type="submit" class="nes-btn is-primary">Update Product</button>
+      <a
+        href="{{ url_for('main.menu') }}"
+        class="nes-btn is-warning"
+        style="margin-left: 10px"
+        >Cancel</a
+      >
+    </div>
+  </form>
+</div>
 {% endblock %}
