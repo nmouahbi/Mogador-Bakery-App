@@ -1,6 +1,6 @@
 # 🥐 Mogador Bakery App
 
-A full-stack online bakery and traditional food ordering web application** built with Python (Flask), PostgreSQL, and integrated with Generative AI tools to streamline development.
+A full-stack online bakery and traditional food ordering web application built with Python (Flask), PostgreSQL.
 
 ---
 
