@@ -1,7 +1,6 @@
 import os
 
 class Config:
-    # Get database URL from Heroku or fallback to SQLite locally
     raw_uri = os.getenv('DATABASE_URL')
 
     if raw_uri and raw_uri.startswith("postgres://"):
