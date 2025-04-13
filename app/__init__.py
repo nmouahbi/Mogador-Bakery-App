@@ -19,9 +19,6 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
     
-    # Optionally, comment out db.create_all() here if you already created tables manually:
-    # with app.app_context():
-    #     db.create_all()
 
     # Register Blueprints
     app.register_blueprint(bp)      # Routes for main functionalities
