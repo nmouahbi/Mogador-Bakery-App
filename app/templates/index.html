@@ -33,35 +33,45 @@
     <ul style="list-style: none; display: flex; margin: 0; padding: 0">
       <li style="margin: 0 15px">
         <a
-          href="{{ url_for('main.category', category='Cakes') }}"
+          href="#"
+          class="category-link"
+          data-category="Cakes"
           style="text-decoration: none; color: #333"
           >Cakes</a
         >
       </li>
       <li style="margin: 0 15px">
         <a
-          href="{{ url_for('main.category', category='Pastries') }}"
+          href="#"
+          class="category-link"
+          data-category="Pastries"
           style="text-decoration: none; color: #333"
           >Pastries</a
         >
       </li>
       <li style="margin: 0 15px">
         <a
-          href="{{ url_for('main.category', category='Bread') }}"
+          href="#"
+          class="category-link"
+          data-category="Bread"
           style="text-decoration: none; color: #333"
           >Bread</a
         >
       </li>
       <li style="margin: 0 15px">
         <a
-          href="{{ url_for('main.category', category='Cookies') }}"
+          href="#"
+          class="category-link"
+          data-category="Cookies"
           style="text-decoration: none; color: #333"
           >Cookies</a
         >
       </li>
       <li style="margin: 0 15px">
         <a
-          href="{{ url_for('main.category', category='Pies') }}"
+          href="#"
+          class="category-link"
+          data-category="Pies"
           style="text-decoration: none; color: #333"
           >Pies</a
         >
@@ -69,7 +79,7 @@
     </ul>
   </div>
 
-  <!-- Right Section: Authentication Links (only for guests) -->
+  <!-- Right Section: (Empty for guests; admin navigation is handled on other pages) -->
   <div class="navbar-right"></div>
 </nav>
 
@@ -77,22 +87,36 @@
 <div class="main-content" style="text-align: center; padding: 30px">
   {% if current_user.is_authenticated %}
   <h1>Welcome Admin!</h1>
-  <p>You are logged in. Manage your products below:</p>
-  <p>
-    <a href="{{ url_for('main.menu') }}" class="nes-btn is-primary"
-      >Manage Products</a
-    >
-    <a
-      href="{{ url_for('main.new_product') }}"
-      class="nes-btn is-success"
-      style="margin-left: 10px"
-      >Add New Product</a
-    >
-  </p>
+  <p>You are logged in. Manage your products below.</p>
   {% else %}
   <h1>🍞 Welcome to Mogador Bakery</h1>
   <p>Discover our traditional baked goods and explore our delicious range.</p>
   <p>Browse by category above or log in as an admin to manage the menu.</p>
   {% endif %}
 </div>
+
+<!-- Category Content Section -->
+<div id="category-content" style="padding: 20px"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".category-link");
+    links.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const category = this.getAttribute("data-category");
+        fetch(`/category/${category}`)
+          .then((response) => response.text())
+          .then((html) => {
+            document.getElementById("category-content").innerHTML = html;
+          })
+          .catch((error) => {
+            console.error("Error loading category content:", error);
+            document.getElementById("category-content").innerHTML =
+              "<p>Error loading products.</p>";
+          });
+      });
+    });
+  });
+</script>
 {% endblock %}

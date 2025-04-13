@@ -125,6 +125,7 @@ def new_product():
 
 @bp.route('/category/<string:category>')
 def category(category):
-    # For now, simply return a placeholder response
-    return f"<h2>Products in {category}</h2>"
+    # Use ilike for case-insensitive matching
+    products = Product.query.filter(Product.category.ilike(category)).all()
+    return render_template('category.html', category=category, products=products)
 

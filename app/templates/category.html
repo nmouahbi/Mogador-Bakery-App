@@ -1,0 +1,29 @@
+<div
+  class="nes-container with-title is-rounded"
+  style="margin: 20px auto; max-width: 800px"
+>
+  <p class="title">{{ category }} Products</p>
+  {% if products %}
+  <div
+    style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center"
+  >
+    {% for product in products %}
+    <div
+      class="nes-container is-rounded"
+      style="width: 200px; padding: 10px; text-align: center"
+    >
+      <img
+        src="{{ url_for('static', filename='images/placeholder.png') }}"
+        alt="{{ product.name }}"
+        style="width: 100%; height: auto; margin-bottom: 10px"
+      />
+      <h3>{{ product.name }}</h3>
+      <p>${{ product.price }}</p>
+      <p>{{ product.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No products available in this category.</p>
+  {% endif %}
+</div>
