@@ -1,60 +1,142 @@
-/* Form container styling */
-form {
-  width: 300px;
-  margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Style for each form paragraph */
-form p {
-  margin-bottom: 15px;
-}
-
-/* Label styling */
-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+/* Global Styles */
+body {
+  background-color: #f3efe0; /* Cream background */
+  font-family: "Helvetica Neue", Arial, sans-serif;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-/* Input styling */
-form input[type="text"],
-form input[type="password"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-sizing: border-box;
+/* Navbar Styling */
+nav.navbar {
+  background-color: #006241; /* Dark green */
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Submit button styling */
-form input[type="submit"],
-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: #ffffff;
+nav.navbar a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav.navbar a:hover {
+  color: #f3efe0;
+}
+
+/* Container Styling */
+.nes-container {
+  background: #fff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Title Styling for Containers */
+.nes-container.with-title .title {
+  color: #006241;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: #f3efe0;
+  padding: 5px 10px;
+  border-bottom: 2px solid #006241;
+}
+
+/* Button Styling */
+.nes-btn {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  padding: 8px 12px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
+  transition: opacity 0.2s ease;
 }
 
-form input[type="submit"]:hover,
-form button:hover {
-  background-color: #218838;
+.nes-btn:hover {
+  opacity: 0.9;
 }
 
-/* Flash or error messages styling */
-.error,
-.flash {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
+.nes-btn.is-primary {
+  background-color: #006241;
+  color: #fff;
+}
+
+.nes-btn.is-success {
+  background-color: #007a33;
+  color: #fff;
+}
+
+.nes-btn.is-warning {
+  background-color: #f4c430;
+  color: #333;
+}
+
+.nes-btn.is-error {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+/* Main Content & Headings */
+.main-content {
+  padding: 40px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+h1,
+h2,
+h3 {
+  color: #006241;
+}
+
+/* Form & Container Adjustments */
+.nes-container.with-title {
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.nes-field {
+  margin-bottom: 15px;
+}
+
+/* Table Styling (for menu view) */
+.nes-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.nes-table th,
+.nes-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Card View Styling for Category Page */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
