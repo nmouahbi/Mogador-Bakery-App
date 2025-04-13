@@ -59,7 +59,12 @@ def delete_product(id):
 @bp.route('/menu')
 @login_required
 def menu():
-    products = Product.query.all()
+    category_filter = request.args.get('category')
+    if category_filter:
+        # Using filter_by for exact match—adjust if you need case-insensitive matching
+        products = Product.query.filter_by(category=category_filter).all()
+    else:
+        products = Product.query.all()
     return render_template('menu.html', products=products)
 
 
