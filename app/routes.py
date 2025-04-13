@@ -75,6 +75,7 @@ def edit_product(id):
         product.price = float(request.form.get('price', product.price))
         product.quantity = int(request.form.get('quantity', product.quantity))
         product.category = request.form.get('category')
+        product.image = request.form.get('image')
         db.session.commit()
         flash('Product updated successfully!')
         return redirect(url_for('main.menu'))
