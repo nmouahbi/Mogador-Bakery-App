@@ -61,7 +61,6 @@ def delete_product(id):
 def menu():
     category_filter = request.args.get('category')
     if category_filter:
-        # Using filter_by for exact match—adjust if you need case-insensitive matching
         products = Product.query.filter_by(category=category_filter).all()
     else:
         products = Product.query.all()
@@ -74,7 +73,6 @@ def menu():
 def edit_product(id):
     product = Product.query.get_or_404(id)
     if request.method == 'POST':
-        # Update product with form data (adjust field names as needed)
         product.name = request.form.get('name')
         product.description = request.form.get('description')
         product.price = float(request.form.get('price', product.price))
@@ -99,7 +97,6 @@ def delete_product_form(id):
 @login_required
 def new_product():
     if request.method == 'POST':
-        # Retrieve form data
         name = request.form.get('name')
         description = request.form.get('description')
         try:
@@ -112,7 +109,6 @@ def new_product():
             quantity = 0
         category = request.form.get('category', 'General')
         
-        # Create a new Product instance
         new_prod = Product(
             name=name,
             description=description,
@@ -125,13 +121,12 @@ def new_product():
         flash("New product added successfully!")
         return redirect(url_for('main.menu'))
     
-    # For GET request, render the new product form
+    
     return render_template('new_product.html')
 
 
 @bp.route('/category/<string:category>')
 def category(category):
-    # Use ilike for case-insensitive matching
     products = Product.query.filter(Product.category.ilike(category)).all()
     return render_template('category.html', category=category, products=products)
 
