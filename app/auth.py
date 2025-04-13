@@ -34,7 +34,6 @@ def register():
         flash('Account created. You can now log in.')
         return redirect(url_for('auth.login'))
     else:
-        # Debug: print form errors to the logs so you can see what is failing
         print("Registration form errors:", form.errors)
     return render_template('register.html', form=form)
 
