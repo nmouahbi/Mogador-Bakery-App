@@ -140,3 +140,21 @@ h3 {
   height: auto;
   margin-bottom: 10px;
 }
+/* Extra Styling for the New Product Form */
+.nes-container.with-title .nes-field label {
+  font-weight: bold;
+  color: #006241; /* Dark green similar to a Starbucks vibe */
+}
+
+.nes-container.with-title {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Optional: Style form input focus */
+.nes-input:focus {
+  border-color: #007a33;
+  box-shadow: 0 0 5px rgba(0, 122, 51, 0.5);
+}
