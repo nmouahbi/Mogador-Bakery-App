@@ -34,7 +34,7 @@ This project was built to fulfill the requirements of a database-backed applicat
 ## 📦 Installation (Local Setup)
 
 Clone the repository:
-   git clone https://github.com/yourusername/mogador-bakery-app.git
+   git clone https://github.com/nmouahbi/mogador-bakery-app.git
    cd mogador-bakery-app
 
 ---
